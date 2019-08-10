@@ -11,10 +11,10 @@ interface IProps {
 const style = makeStyles(() =>
     createStyles({
         graph: {
-            marginLeft: 500,
-            marginRight: 500
-        },
-    }));
+            maxWidth: 1000
+        }
+    }))
+;
 
 const data2012 = [
     {quarter: 1, earnings: 13000},
