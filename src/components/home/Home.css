@@ -6,7 +6,7 @@ html {
     width: 100vw;
     height: 70vh;
     color: #fff;
-    background: linear-gradient(90deg, #004587, #004587, #363636, #363636);
+    background: linear-gradient(10deg, #004587, #004587, #262626, #262626);
     background-size: 400% 400%;
     -webkit-animation: Gradient 15s ease infinite;
     -moz-animation: Gradient 15s ease infinite;

@@ -1,6 +1,5 @@
 import React from 'react';
-import {AppBar, Toolbar, Typography} from "@material-ui/core";
-import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import {AppBar, Theme, Toolbar, Typography} from "@material-ui/core";
 import {ThemeProvider} from "@material-ui/styles";
 import IconButton from "@material-ui/core/IconButton";
 import createStyles from "@material-ui/styles/createStyles";
@@ -10,16 +9,9 @@ import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons"
 
 const ghPagesRouting = '/SitePersoFrontend/#';
 
-const theme = createMuiTheme({
-    palette: {
-        primary: {main: '#FFFFFF'},
-        secondary: {main: '#0078ff'},
-    },
-    typography: {
-        fontFamily: 'arial',
-        fontSize: 18,
-    },
-});
+interface IProps {
+    theme: Theme
+}
 
 const style = makeStyles(() =>
     createStyles({
@@ -38,11 +30,12 @@ const style = makeStyles(() =>
                 color: '#add5ff',
                 background: 'none'
             }
-        }
-    }))
+        },
+    }));
 
-export default function Navbar() {
+export default function Navbar(props: IProps) {
     const classes = style();
+    const {theme} = props
     return (
         <ThemeProvider theme={theme}>
             <AppBar className={classes.appBar}>
