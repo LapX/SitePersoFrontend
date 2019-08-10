@@ -1,7 +1,18 @@
 import React, {Component} from 'react';
 import './Home.css';
 
-export class Home extends Component {
+interface IState {
+}
+
+interface IProps {
+}
+
+export class Home extends Component<IProps, IState> {
+    constructor(props: IProps) {
+        super(props)
+        this.state = {}
+    }
+
     componentDidMount() {
         document.documentElement.classList.toggle('animatedBackground');
     }
@@ -12,18 +23,19 @@ export class Home extends Component {
 
     render() {
         return (
-            <div id='welcomeText' className='tile is-ancestor has-text-centered'>
+            <div id='welcomeText'
+                 className='tile is-ancestor has-text-centered is-vertical'>
                 <div className='tile is-parent '>
                     <article className='tile is-child'>
-                        <p id='welcomeTitle' className='title'>Bienvenue</p>
+                        <p id='welcomeTitle' className='title'>Welcome</p>
                         <div className='content'>
-                            Ce site a été créé dans l'optique de présenter quelques projets
-                            sur lesquels j'ai travaillé au fil des années.
+                            lorem ipsum
                         </div>
                     </article>
                 </div>
             </div>
-        );
+        )
+            ;
     }
 }
 
