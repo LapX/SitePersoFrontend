@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const ApiUrl: String = 'http://localhost:8080'
+const ApiUrl: String = 'https://shrouded-reaches-97153.herokuapp.com'
 
 export interface Datalist {
     ID: number,
