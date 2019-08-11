@@ -33,7 +33,7 @@ const style = makeStyles(() =>
         },
     }));
 
-export default function Navbar(props: IProps) {
+const Navbar = (props: IProps) => {
     const classes = style();
     const {theme} = props
     return (
@@ -66,3 +66,5 @@ export default function Navbar(props: IProps) {
     );
 
 }
+
+export default Navbar;
