@@ -31,7 +31,10 @@ const Dashboard = (props: IProps) => {
     }, [])
 
     const fetchAndSetData = async () => {
-        setData(await getData())
+        const fetchedData = await getData();
+        if (fetchedData != null) {
+            setData(fetchedData)
+        }
     }
 
     return (

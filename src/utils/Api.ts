@@ -17,6 +17,7 @@ export async function getData() {
         .then(response => {
             return response.data
         }).catch(error => {
+            alert("Api is down.")
             console.log(error)
         })
 
