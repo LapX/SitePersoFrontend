@@ -13,7 +13,9 @@ const style = makeStyles(() =>
     createStyles({
         container: {
             minWidth: 500,
-            maxWidth: 1000
+        },
+        containerMobile: {
+            minWidth: 100,
         },
     }))
 ;
@@ -43,14 +45,14 @@ const EarningsGraph = (props: IProps) => {
     }
 
     return (
-        <div className={classes.container}>
-            <VictoryChart domainPadding={30} theme={chartTheme} animate={{duration: 2000, easing: "exp"}}>
+        <div className={window.matchMedia("(max-width: 570px)").matches ? classes.containerMobile : classes.container}>
+            <VictoryChart domainPadding={30} theme={chartTheme} animate={{duration: 2000, easing: "linear"}}>
                 <VictoryAxis tickValues={["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"]}
                              style={{}}/>
                 <VictoryAxis dependentAxis tickFormat={(x) => (`$${x / 1000}k`)}/>
                 <VictoryStack colorScale={"cool"}>
                     {data.map(data => (<VictoryBar
-
+                        animate={{duration: 1, easing: "exp"}}
                         key={data.ID}
                         data={data.Tuples}
                         x={"Quarter"}

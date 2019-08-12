@@ -28,6 +28,9 @@ const Dashboard = (props: IProps) => {
             <EarningsGraph theme={theme}/>
             <EarningsGraph theme={theme}/>
             <EarningsGraph theme={theme}/>
+            <EarningsGraph theme={theme}/>
+            <EarningsGraph theme={theme}/>
+            <EarningsGraph theme={theme}/>
         </div>
     );
 
