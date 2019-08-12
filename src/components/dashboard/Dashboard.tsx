@@ -14,8 +14,9 @@ const style = makeStyles(() =>
             display: 'flex',
             flexWrap: 'wrap',
             marginLeft: 'auto',
+            marginRight: 'auto',
             width: '90%',
-            marginTop: 10
+            marginTop: 50
         }
     }))
 ;
