@@ -20,7 +20,7 @@ const style = makeStyles(() =>
             borderRadius: 10,
         },
         containerMobile: {
-            width: 100,
+            width: 'auto',
             backgroundColor: '#242424',
             margin: 10,
             borderRadius: 10,
@@ -32,7 +32,6 @@ const style = makeStyles(() =>
             marginBottom: -50,
             marginLeft: 'auto',
             width: '70%',
-
         }
     }))
 ;
