@@ -23,7 +23,8 @@ const style = makeStyles(() =>
             }
         },
         appBar: {
-            background: 'transparent', boxShadow: 'none',
+            background: 'transparent',
+            boxShadow: 'none',
         },
         button: {
             "&:hover": {
@@ -38,7 +39,9 @@ const Navbar = (props: IProps) => {
     const {theme} = props
     return (
         <ThemeProvider theme={theme}>
-            <AppBar className={classes.appBar}>
+            <AppBar
+                position="relative"
+                className={classes.appBar}>
                 <Toolbar>
                     <IconButton color='primary' href={ghPagesRouting + '/'} className={classes.button}>
                         <Typography>

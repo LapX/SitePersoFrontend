@@ -16,7 +16,6 @@ const style = makeStyles(() =>
             marginLeft: 'auto',
             marginRight: 'auto',
             width: '90%',
-            marginTop: 50
         }
     }))
 ;
