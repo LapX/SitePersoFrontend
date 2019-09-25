@@ -1,4 +1,4 @@
-Frontend for my personnal website : https://lapx.github.io/SitePersoFrontend/#/
+Frontend for my personal website : https://lapx.github.io/SitePersoFrontend/#/
 
 Currently consists of a homepage and a dashboard loaded with random data.
 
