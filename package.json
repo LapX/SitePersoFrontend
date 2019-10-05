@@ -25,6 +25,7 @@
     "react-scripts": "3.1.0",
     "rxjs": "^6.5.2",
     "typescript": "3.5.3",
+    "universal-cookie": "^4.0.2",
     "victory": "^32.3.6"
   },
   "scripts": {

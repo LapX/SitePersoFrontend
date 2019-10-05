@@ -10,5 +10,13 @@ export async function getData() {
             alert("Api is down.")
             console.log(error)
         })
+}
 
+export async function getUser(token: string) {
+    return await axios.get(ApiUrl + '/auth?token=' + token).then(response => {
+        return response.data
+    }).catch(error => {
+        alert("Api is down.")
+        console.log(error)
+    })
 }

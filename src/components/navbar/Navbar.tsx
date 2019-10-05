@@ -8,6 +8,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons"
 
 const ghPagesRouting = '/SitePersoFrontend/#';
+//const backend = 'https://lapx.herokuapp.com/';
+const backend = 'http://localhost:8080/';
 
 interface IProps {
     theme: Theme
@@ -51,6 +53,11 @@ const Navbar = (props: IProps) => {
                     <IconButton color='primary' href={ghPagesRouting + '/Dashboard'} className={classes.button}>
                         <Typography>
                             Dashboard
+                        </Typography>
+                    </IconButton>
+                    <IconButton color='primary' href={backend + '/auth/google/login'} className={classes.button}>
+                        <Typography>
+                            Login
                         </Typography>
                     </IconButton>
                     <IconButton color='primary'
