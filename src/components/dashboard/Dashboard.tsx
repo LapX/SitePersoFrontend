@@ -5,6 +5,7 @@ import createStyles from "@material-ui/styles/createStyles/createStyles";
 import {getGraphsData} from "../../utils/Api";
 import {getToken} from "../../utils/Authentication";
 import EarningsGraph from "./EarningsGraph";
+import ClippedDrawer from "../drawer/ClippedDrawer";
 
 interface IProps {
     theme: Theme
@@ -33,7 +34,7 @@ const Dashboard = (props: IProps) => {
 
     useEffect(() => {
         fetchAndSetGraphsData()
-    }, [])
+    }, []);
 
     const fetchAndSetGraphsData = async () => {
         const token = getToken();
@@ -43,10 +44,11 @@ const Dashboard = (props: IProps) => {
         } else {
             setGraphsData({EarningsGraphArray: []})
         }
-    }
+    };
 
     return (
         <div className={classes.container}>
+            <ClippedDrawer theme={theme}/>
             {graphsData.EarningsGraphArray.map(data => (
                 <EarningsGraph theme={theme} EarningsGraphData={data.EarningsGraphData}/>))
             }

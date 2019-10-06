@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {AppBar, Theme, Toolbar, Typography} from "@material-ui/core";
 import {ThemeProvider} from "@material-ui/styles";
 import IconButton from "@material-ui/core/IconButton";
@@ -14,18 +14,24 @@ interface IProps {
     theme: Theme
 }
 
-const style = makeStyles(() =>
+const style = makeStyles((theme) =>
     createStyles({
         navbarEnd: {
             marginLeft: 'auto',
             "&:hover": {
                 color: '#add5ff',
-                background: 'none'
+                background: 'none',
             }
         },
-        appBar: {
+        homeAppBar: {
             background: 'transparent',
             boxShadow: 'none',
+            zIndex: theme.zIndex.drawer + 1,
+        },
+        appBar: {
+            background: '#242424',
+            boxShadow: 'none',
+            zIndex: theme.zIndex.drawer + 1,
         },
         button: {
             "&:hover": {
@@ -35,18 +41,25 @@ const style = makeStyles(() =>
         },
     }));
 
+
 const Navbar = (props: IProps) => {
     const classes = style();
-    const {theme} = props
+    const {theme} = props;
+    const [hash, setHash] = useState(window.location.hash);
+
+    useEffect(() => {
+        setHash(window.location.hash)
+    }, []);
+
     return (
         <ThemeProvider theme={theme}>
             <AppBar
                 position="relative"
-                className={classes.appBar}>
+                className={hash == "#/" ? classes.homeAppBar : classes.appBar}>
                 <Toolbar>
                     <IconButton color='primary' href={ghPagesRouting + '/'} className={classes.button}>
                         <Typography>
-                            Home
+                            LapX
                         </Typography>
                     </IconButton>
                     <IconButton color='primary' href={ghPagesRouting + '/Dashboard'} className={classes.button}>

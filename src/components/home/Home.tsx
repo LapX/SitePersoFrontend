@@ -45,7 +45,7 @@ export class Home extends Component<IProps, IState> {
                  className='tile is-ancestor has-text-centered is-vertical'>
                 <div className='tile is-parent '>
                     <article className='tile is-child'>
-                        <p id='welcomeTitle' className='title'>Dashboard</p>
+                        <p id='welcomeTitle' className='title'>LapX Dashboard</p>
                         <div className='content'>
                             A beautiful dashboard loaded with random data.
                         </div>
