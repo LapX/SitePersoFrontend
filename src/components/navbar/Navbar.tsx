@@ -6,6 +6,9 @@ import createStyles from "@material-ui/styles/createStyles";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons"
+import Avatar from "@material-ui/core/Avatar";
+import {getToken} from "../../utils/Authentication";
+import {getUser} from "../../utils/Api";
 
 const ghPagesRouting = '/SitePersoFrontend/#';
 const backend = 'https://lapx.herokuapp.com/';
@@ -29,7 +32,7 @@ const style = makeStyles((theme) =>
             zIndex: theme.zIndex.drawer + 1,
         },
         appBar: {
-            background: '#242424',
+            background: '#004587',
             boxShadow: 'none',
             zIndex: theme.zIndex.drawer + 1,
         },
@@ -46,10 +49,22 @@ const Navbar = (props: IProps) => {
     const classes = style();
     const {theme} = props;
     const [hash, setHash] = useState(window.location.hash);
+    const [userPicture, setUserPicture] = useState("");
 
     useEffect(() => {
-        setHash(window.location.hash)
+        window.addEventListener("hashchange", onHashChange);
+        getUserPicture();
     }, []);
+
+    const onHashChange = () => {
+        setHash(window.location.hash)
+    }
+
+    const getUserPicture = async () => {
+        const token = getToken();
+        const userInfo = await getUser(token);
+        setUserPicture(userInfo.Picture)
+    }
 
     return (
         <ThemeProvider theme={theme}>
@@ -59,7 +74,7 @@ const Navbar = (props: IProps) => {
                 <Toolbar>
                     <IconButton color='primary' href={ghPagesRouting + '/'} className={classes.button}>
                         <Typography>
-                            LapX
+                            Home
                         </Typography>
                     </IconButton>
                     <IconButton color='primary' href={ghPagesRouting + '/Dashboard'} className={classes.button}>
@@ -67,13 +82,18 @@ const Navbar = (props: IProps) => {
                             Dashboard
                         </Typography>
                     </IconButton>
-                    <IconButton color='primary' href={backend + '/auth/google/login'} className={classes.button}>
+                    <IconButton color='primary' href={backend + '/auth/google/login'}
+                                className={userPicture == "" ? classes.navbarEnd : "is-hidden"}>
                         <Typography>
                             Login
                         </Typography>
                     </IconButton>
+                    <IconButton color='primary' href={backend + '/auth/google/login'}
+                                className={userPicture == "" ? "is-hidden" : classes.navbarEnd}>
+                        <Avatar src={userPicture}/>
+                    </IconButton>
                     <IconButton color='primary'
-                                className={classes.navbarEnd}
+                                className={classes.button}
                                 href="https://github.com/LapX">
                         <FontAwesomeIcon icon={faGithub}/>
                     </IconButton>
