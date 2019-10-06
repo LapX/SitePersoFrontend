@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const ApiUrl: String = 'https://lapx.herokuapp.com/'
+//const ApiUrl: String = 'https://lapx.herokuapp.com/'
+const ApiUrl: String = 'http://localhost:8080/'
 
 export async function getData() {
     return await axios.get(ApiUrl + '/data')

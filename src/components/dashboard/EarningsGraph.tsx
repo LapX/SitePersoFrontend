@@ -1,14 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Theme} from "@material-ui/core";
 import {VictoryAxis, VictoryBar, VictoryChart, VictoryStack, VictoryTheme} from 'victory';
 import {ThemeProvider} from "@material-ui/styles";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import createStyles from "@material-ui/styles/createStyles/createStyles";
-import {getData} from "../../utils/Api";
 import Typography from "@material-ui/core/Typography";
+import {EarningsGraphData} from "./Dashboard";
 
 interface IProps {
     theme: Theme
+    data: Array<EarningsGraphData>
 }
 
 const style = makeStyles(() =>
@@ -44,24 +45,7 @@ const axisStyle = {
 
 const EarningsGraph = (props: IProps) => {
     const classes = style();
-    const {theme} = props;
-    const [data, setData] = useState([{
-        ID: 0, Tuples: [{
-            "Quarter": 1,
-            "Earnings": 0
-        }]
-    }])
-
-    useEffect(() => {
-        fetchAndSetData()
-    }, [])
-
-    const fetchAndSetData = async () => {
-        const fetchedData = await getData();
-        if (fetchedData != null) {
-            setData(fetchedData)
-        }
-    }
+    const {theme, data} = props;
 
     return (
         <ThemeProvider theme={theme}>
