@@ -38,8 +38,10 @@ const Dashboard = (props: IProps) => {
     const fetchAndSetGraphsData = async () => {
         const token = getToken();
         const fetchedData = await getGraphsData(token);
-        if (fetchedData != null) {
+        if (fetchedData.EarningsGraphArray != null) {
             setGraphsData(fetchedData)
+        } else {
+            setGraphsData({EarningsGraphArray: []})
         }
     }
 
