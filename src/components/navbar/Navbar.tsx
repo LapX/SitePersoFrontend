@@ -8,7 +8,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons"
 
 const ghPagesRouting = '/SitePersoFrontend/#';
-const backend = 'https://lapx.herokuapp.com/';
+//const backend = 'https://lapx.herokuapp.com/';
+const backend = 'http://localhost:8080/';
 
 interface IProps {
     theme: Theme

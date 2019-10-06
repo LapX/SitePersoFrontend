@@ -5,12 +5,22 @@ import {ThemeProvider} from "@material-ui/styles";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import createStyles from "@material-ui/styles/createStyles/createStyles";
 import Typography from "@material-ui/core/Typography";
-import {EarningsGraphData} from "./Dashboard";
 
 interface IProps {
     theme: Theme
-    data: Array<EarningsGraphData>
+    EarningsGraphData: Array<EarningsGraphData>
 }
+
+interface EarningsGraphData {
+    ID: number
+    Tuples: Array<Tuples>
+}
+
+interface Tuples {
+    Quarter: number
+    Earnings: number
+}
+
 
 const style = makeStyles(() =>
     createStyles({
@@ -45,19 +55,19 @@ const axisStyle = {
 
 const EarningsGraph = (props: IProps) => {
     const classes = style();
-    const {theme, data} = props;
+    const {theme, EarningsGraphData} = props;
 
     return (
         <ThemeProvider theme={theme}>
             <div
                 className={window.matchMedia("(max-width: 570px)").matches ? classes.containerMobile : classes.container}>
-                <Typography className={classes.typography}>Earnings in the last {data.length} years</Typography>
-                <VictoryChart domainPadding={30} theme={VictoryTheme.material}
-                              animate={{duration: 1000, easing: "linear"}}>
+                <Typography className={classes.typography}>Earnings in the
+                    last {EarningsGraphData.length} years</Typography>
+                <VictoryChart domainPadding={30} theme={VictoryTheme.material}>
                     <VictoryAxis tickValues={["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"]} style={axisStyle}/>
                     <VictoryAxis dependentAxis tickFormat={(x) => (`$${x / 1000}k`)} style={axisStyle}/>
                     <VictoryStack colorScale={"cool"}>
-                        {data.map(data => (<VictoryBar
+                        {EarningsGraphData.map(data => (<VictoryBar
                             key={data.ID}
                             data={data.Tuples}
                             x={"Quarter"}

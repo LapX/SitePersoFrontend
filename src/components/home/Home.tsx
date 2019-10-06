@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Home.css';
 import {getUser} from "../../utils/Api";
-import Cookies from "universal-cookie/lib";
+import {getToken, setToken} from "../../utils/Authentication";
 
 interface IState {
     email: string,
@@ -22,31 +22,20 @@ export class Home extends Component<IProps, IState> {
 
     componentDidMount() {
         document.documentElement.classList.toggle('animatedBackground');
-        this.checkIfUserIsLoggedIn();
+        setToken();
+        this.getUserInfo();
     }
 
     componentWillUnmount() {
         document.documentElement.classList.toggle('animatedBackground');
     }
 
-    checkIfUserIsLoggedIn() {
-        const cookies = new Cookies();
-        const search = window.location.search;
-        const params = new URLSearchParams(search);
-        let token = params.get('token');
-        if (token === null) {
-            const cookie = cookies.get('token');
-            if (cookie != null) {
-                token = cookie;
-            }
-        }
-        if (token !== null) {
-            cookies.set('token', token);
-            getUser(token).then(response => this.setState({
-                email: response.Email,
-                picture: response.Picture
-            }))
-        }
+    getUserInfo() {
+        const token = getToken();
+        getUser(token).then(response => this.setState({
+            email: response.Email,
+            picture: response.Picture
+        }))
     }
 
     render() {
