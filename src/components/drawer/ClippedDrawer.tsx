@@ -1,5 +1,5 @@
 import {Drawer, ListItem, ListItemText, Theme} from "@material-ui/core";
-import React from "react";
+import React, {useState} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import createStyles from "@material-ui/styles/createStyles/createStyles";
 import {ThemeProvider} from "@material-ui/styles";
@@ -13,6 +13,8 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import {addGraphs} from "../../utils/Api";
 import {getToken} from "../../utils/Authentication";
+import IconButton from "@material-ui/core/IconButton";
+import {Menu} from "@material-ui/icons";
 
 
 interface IProps {
@@ -24,12 +26,21 @@ const drawerWidth = 170;
 
 const style = makeStyles((theme) =>
     createStyles({
-        drawer: {
+        drawerOpen: {
             width: drawerWidth,
             flexShrink: 0,
         },
-        drawerPaper: {
+        drawerClosed: {
+            width: theme.spacing(7) + 1,
+            flexShrink: 0,
+        },
+        drawerPaperOpen: {
             width: drawerWidth,
+            backgroundColor: '#242424',
+            color: '#ffffff'
+        },
+        drawerPaperClosed: {
+            width: theme.spacing(7) + 1,
             backgroundColor: '#242424',
             color: '#ffffff'
         },
@@ -47,6 +58,10 @@ const style = makeStyles((theme) =>
             backgroundColor: '#004587',
             marginRight: 12
         },
+        avatarWithSpacing: {
+            backgroundColor: '#004587',
+            marginLeft: 7
+        },
         toolbar: theme.mixins.toolbar
     }))
 ;
@@ -54,27 +69,43 @@ const style = makeStyles((theme) =>
 const ClippedDrawer = (props: IProps) => {
     const {theme, updateCallback} = props
     const classes = style();
+    const [isDrawerOpened, setDrawerOpen] = useState(false);
+    const [isGraphsOpen, setGraphsOpen] = useState(false);
 
     const adjustNumberOfGraphs = async (number: number) => {
         await addGraphs(getToken(), number);
         updateCallback();
     }
 
+    const toggleDrawer = () => {
+        setDrawerOpen(!isDrawerOpened);
+    }
+
+    const toggleGraphs = () => {
+        setGraphsOpen(!isGraphsOpen);
+    }
+
     return (
         <ThemeProvider theme={theme}>
             <Drawer
                 theme={theme}
-                className={classes.drawer} variant="permanent" classes={{
-                paper: classes.drawerPaper,
+                className={isDrawerOpened ? classes.drawerOpen : classes.drawerClosed} variant="permanent" classes={{
+                paper: isDrawerOpened ? classes.drawerPaperOpen : classes.drawerPaperClosed,
             }}>
                 <div className={classes.toolbar}/>
-                <ExpansionPanel className={classes.expansionPanel}>
+                <IconButton
+                    onClick={toggleDrawer}
+                ><Menu color='primary'/>
+                </IconButton>
+                <ExpansionPanel className={classes.expansionPanel}
+                                onClick={isDrawerOpened ? toggleGraphs : toggleDrawer}
+                                expanded={isGraphsOpen && isDrawerOpened}>
                     <ExpansionPanelSummary>
                         <ListItem button key={'Graphs'}>
                             <Avatar className={classes.avatar}>
                                 <FontAwesomeIcon icon={faChartBar}/>
                             </Avatar>
-                            <ListItemText primary={'Graphs'}/>
+                            <ListItemText primary={'Graphs'} className={isDrawerOpened ? "" : "is-hidden"}/>
                         </ListItem>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
