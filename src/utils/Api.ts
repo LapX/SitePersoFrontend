@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const ApiUrl: String = 'https://lapx.herokuapp.com/'
+const ApiUrl: String = 'https://lapx.herokuapp.com'
 
 export async function getData() {
     return await axios.get(ApiUrl + '/data')
@@ -30,3 +30,21 @@ export async function getUser(token: string) {
         console.log(error)
     })
 }
+
+export async function addGraphs(token: string, amount: number) {
+    console.dir(token)
+    console.dir(amount)
+    return await axios.post(ApiUrl + '/addGraphs',
+        {
+            token: token,
+            amount: amount
+        }, {
+            headers: {
+                'Content-Type': 'text/plain'
+            }
+        }).catch(error => {
+        alert("Api is down.")
+        console.log(error)
+    })
+}
+

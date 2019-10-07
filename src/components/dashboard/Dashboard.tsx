@@ -48,7 +48,7 @@ const Dashboard = (props: IProps) => {
 
     return (
         <div className={classes.container}>
-            <ClippedDrawer theme={theme}/>
+            <ClippedDrawer theme={theme} updateCallback={fetchAndSetGraphsData}/>
             {graphsData.EarningsGraphArray.map(data => (
                 <EarningsGraph theme={theme} EarningsGraphData={data.EarningsGraphData}/>))
             }

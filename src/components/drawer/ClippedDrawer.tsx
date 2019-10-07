@@ -11,10 +11,13 @@ import Button from "@material-ui/core/Button";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import {addGraphs} from "../../utils/Api";
+import {getToken} from "../../utils/Authentication";
 
 
 interface IProps {
     theme: Theme
+    updateCallback: Function
 }
 
 const drawerWidth = 170;
@@ -49,8 +52,13 @@ const style = makeStyles((theme) =>
 ;
 
 const ClippedDrawer = (props: IProps) => {
-    const {theme} = props
+    const {theme, updateCallback} = props
     const classes = style();
+
+    const adjustNumberOfGraphs = async (number: number) => {
+        await addGraphs(getToken(), number);
+        updateCallback();
+    }
 
     return (
         <ThemeProvider theme={theme}>
@@ -61,8 +69,7 @@ const ClippedDrawer = (props: IProps) => {
             }}>
                 <div className={classes.toolbar}/>
                 <ExpansionPanel className={classes.expansionPanel}>
-                    <ExpansionPanelSummary
-                    >
+                    <ExpansionPanelSummary>
                         <ListItem button key={'Graphs'}>
                             <Avatar className={classes.avatar}>
                                 <FontAwesomeIcon icon={faChartBar}/>
@@ -71,10 +78,13 @@ const ClippedDrawer = (props: IProps) => {
                         </ListItem>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
-                        <ButtonGroup size="small" aria-label="small outlined button group"
-                        >
-                            <Button className={classes.button}>+</Button>
-                            <Button className={classes.button}>-</Button>
+                        <ButtonGroup size="small" aria-label="small outlined button group">
+                            <Button onClick={() => {
+                                adjustNumberOfGraphs(-1)
+                            }} className={classes.button}>-</Button>
+                            <Button onClick={() => {
+                                adjustNumberOfGraphs(1)
+                            }} className={classes.button}>+</Button>
                         </ButtonGroup>
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
