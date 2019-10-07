@@ -56,11 +56,8 @@ const style = makeStyles((theme) =>
         },
         avatar: {
             backgroundColor: '#004587',
-            marginRight: 12
-        },
-        avatarWithSpacing: {
-            backgroundColor: '#004587',
-            marginLeft: 7
+            marginRight: 12,
+            marginLeft: 10
         },
         toolbar: theme.mixins.toolbar
     }))
@@ -79,6 +76,7 @@ const ClippedDrawer = (props: IProps) => {
 
     const toggleDrawer = () => {
         setDrawerOpen(!isDrawerOpened);
+        setGraphsOpen(!isGraphsOpen);
     }
 
     const toggleGraphs = () => {
@@ -98,9 +96,8 @@ const ClippedDrawer = (props: IProps) => {
                 ><Menu color='primary'/>
                 </IconButton>
                 <ExpansionPanel className={classes.expansionPanel}
-                                onClick={isDrawerOpened ? toggleGraphs : toggleDrawer}
                                 expanded={isGraphsOpen && isDrawerOpened}>
-                    <ExpansionPanelSummary>
+                    <ExpansionPanelSummary onClick={isDrawerOpened ? toggleGraphs : toggleDrawer}>
                         <ListItem button key={'Graphs'}>
                             <Avatar className={classes.avatar}>
                                 <FontAwesomeIcon icon={faChartBar}/>
