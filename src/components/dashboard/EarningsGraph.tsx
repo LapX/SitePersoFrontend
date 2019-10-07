@@ -25,10 +25,9 @@ interface Tuples {
 const style = makeStyles(() =>
     createStyles({
         container: {
-            width: 500,
+            width: 440,
             backgroundColor: '#242424',
-            margin: 10,
-            borderRadius: 10,
+            margin: 10
         },
         containerMobile: {
             width: 'auto',

@@ -32,7 +32,7 @@ const style = makeStyles((theme) =>
         },
         drawerClosed: {
             width: theme.spacing(7) + 1,
-            flexShrink: 0,
+            flexShrink: 0
         },
         drawerPaperOpen: {
             width: drawerWidth,

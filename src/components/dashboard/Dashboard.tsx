@@ -15,10 +15,7 @@ const style = makeStyles(() =>
     createStyles({
         container: {
             display: 'flex',
-            flexWrap: 'wrap',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            width: '90%',
+            flexWrap: 'wrap'
         }
     }))
 ;
@@ -54,7 +51,6 @@ const Dashboard = (props: IProps) => {
             }
         </div>
     );
-
 }
 
 export default Dashboard;
