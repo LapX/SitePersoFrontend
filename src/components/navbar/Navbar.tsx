@@ -69,7 +69,7 @@ const Navbar = (props: IProps) => {
     return (
         <ThemeProvider theme={theme}>
             <AppBar
-                position="relative"
+                position="sticky"
                 className={hash == "#/" ? classes.homeAppBar : classes.appBar}>
                 <Toolbar>
                     <IconButton color='primary' href={ghPagesRouting + '/'} className={classes.button}>

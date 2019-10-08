@@ -15,7 +15,8 @@ const style = makeStyles(() =>
     createStyles({
         container: {
             display: 'flex',
-            flexWrap: 'wrap'
+            flexWrap: 'wrap',
+            paddingLeft: 65
         }
     }))
 ;
@@ -44,12 +45,15 @@ const Dashboard = (props: IProps) => {
     };
 
     return (
-        <div className={classes.container}>
+        <>
             <ClippedDrawer theme={theme} updateCallback={fetchAndSetGraphsData}/>
-            {graphsData.EarningsGraphArray.map(data => (
-                <EarningsGraph theme={theme} EarningsGraphData={data.EarningsGraphData}/>))
-            }
-        </div>
+            <div className={classes.container}>
+
+                {graphsData.EarningsGraphArray.map(data => (
+                    <EarningsGraph theme={theme} EarningsGraphData={data.EarningsGraphData}/>))
+                }
+            </div>
+        </>
     );
 }
 
