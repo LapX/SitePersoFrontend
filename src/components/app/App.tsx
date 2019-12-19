@@ -3,6 +3,7 @@ import {HashRouter, Route} from 'react-router-dom';
 import Home from "../home/Home";
 import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/Dashboard"
+import LightingControl from "../lightingcontrol/LightingControl"
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 
 const theme = createMuiTheme({
@@ -23,6 +24,7 @@ const App: React.FC = () => {
             <HashRouter>
                 <Route exact path='/' component={Home}/>
                 <Route exact path='/Dashboard' component={() => <Dashboard theme={theme}/>}/>
+                <Route exact path='/LightingControl' component={() => <LightingControl theme={theme}/>}/>
             </HashRouter>
         </div>
     );

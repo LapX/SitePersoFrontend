@@ -48,7 +48,6 @@ const Dashboard = (props: IProps) => {
         <>
             <ClippedDrawer theme={theme} updateCallback={fetchAndSetGraphsData}/>
             <div className={classes.container}>
-
                 {graphsData.EarningsGraphArray.map(data => (
                     <EarningsGraph theme={theme} EarningsGraphData={data.EarningsGraphData}/>))
                 }

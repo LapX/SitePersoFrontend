@@ -82,6 +82,11 @@ const Navbar = (props: IProps) => {
                             Dashboard
                         </Typography>
                     </IconButton>
+                    <IconButton color='primary' href={ghPagesRouting + '/LightingControl'} className={classes.button}>
+                        <Typography>
+                            Lighting control
+                        </Typography>
+                    </IconButton>
                     <IconButton color='primary' href={backend + '/auth/google/login'}
                                 className={userPicture == "" ? classes.navbarEnd : "is-hidden"}>
                         <Typography>
