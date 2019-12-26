@@ -29,7 +29,7 @@ const LightingControl = (props: IProps) => {
 
     return (<div className={classes.videoContainer}>
         <iframe className={classes.video}
-                src='https://www.youtube.com/embed/Zu4WJxS1eDA'
+                src='https://www.youtube.com/embed/EEEC12kXwYc'
                 frameBorder='0'
                 allow='autoplay; encrypted-media'
                 allowFullScreen
