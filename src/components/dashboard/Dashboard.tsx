@@ -6,6 +6,7 @@ import {getGraphsData} from "../../utils/Api";
 import {getToken} from "../../utils/Authentication";
 import EarningsGraph from "./EarningsGraph";
 import ClippedDrawer from "../drawer/ClippedDrawer";
+import NumberShowcase from "./NumberShowcase";
 
 interface IProps {
     theme: Theme
@@ -48,6 +49,7 @@ const Dashboard = (props: IProps) => {
         <>
             <ClippedDrawer theme={theme} updateCallback={fetchAndSetGraphsData}/>
             <div className={classes.container}>
+                <NumberShowcase theme={theme} title={"Profits"} number={20000} unit={"$"}/>
                 {graphsData.EarningsGraphArray.map(data => (
                     <EarningsGraph theme={theme} EarningsGraphData={data.EarningsGraphData}/>))
                 }
