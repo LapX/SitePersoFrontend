@@ -45,9 +45,13 @@ export class Home extends Component<IProps, IState> {
                  className='tile is-ancestor has-text-centered is-vertical'>
                 <div className='tile is-parent '>
                     <article className='tile is-child'>
-                        <p id='welcomeTitle' className='title'>LapX Dashboard</p>
+                        <p id='welcomeTitle' className='title'>LapX Personal Website</p>
                         <div className='content'>
-                            A beautiful dashboard loaded with random data.
+                            Here you will find personal projects I worked on in my free time.
+                        </div>
+                        <div className='content'>
+                            You can find the code on my Github profile by clicking the icon at the top right of the
+                            website.
                         </div>
                         <div className={email == "" ? 'is-hidden' : 'content'}>
                             Welcome {email}
