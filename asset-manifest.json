@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/SitePersoFrontend/static/css/main.3a83b64c.chunk.css",
-    "main.js": "/SitePersoFrontend/static/js/main.b11492e3.chunk.js",
-    "main.js.map": "/SitePersoFrontend/static/js/main.b11492e3.chunk.js.map",
+    "main.js": "/SitePersoFrontend/static/js/main.9ecf47e6.chunk.js",
+    "main.js.map": "/SitePersoFrontend/static/js/main.9ecf47e6.chunk.js.map",
     "runtime~main.js": "/SitePersoFrontend/static/js/runtime~main.ffdfd2b0.js",
     "runtime~main.js.map": "/SitePersoFrontend/static/js/runtime~main.ffdfd2b0.js.map",
     "static/css/2.62908225.chunk.css": "/SitePersoFrontend/static/css/2.62908225.chunk.css",
-    "static/js/2.18e623b5.chunk.js": "/SitePersoFrontend/static/js/2.18e623b5.chunk.js",
-    "static/js/2.18e623b5.chunk.js.map": "/SitePersoFrontend/static/js/2.18e623b5.chunk.js.map",
+    "static/js/2.6ecab0c0.chunk.js": "/SitePersoFrontend/static/js/2.6ecab0c0.chunk.js",
+    "static/js/2.6ecab0c0.chunk.js.map": "/SitePersoFrontend/static/js/2.6ecab0c0.chunk.js.map",
     "index.html": "/SitePersoFrontend/index.html",
-    "precache-manifest.7fcd0fa2704c01898af51f05657dd5c2.js": "/SitePersoFrontend/precache-manifest.7fcd0fa2704c01898af51f05657dd5c2.js",
+    "precache-manifest.50ea8bc262a78739fa4c1560fe1ca9c6.js": "/SitePersoFrontend/precache-manifest.50ea8bc262a78739fa4c1560fe1ca9c6.js",
     "service-worker.js": "/SitePersoFrontend/service-worker.js",
     "static/css/2.62908225.chunk.css.map": "/SitePersoFrontend/static/css/2.62908225.chunk.css.map",
     "static/css/main.3a83b64c.chunk.css.map": "/SitePersoFrontend/static/css/main.3a83b64c.chunk.css.map"
