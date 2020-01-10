@@ -17,6 +17,11 @@ export function setToken() {
 }
 
 export function getToken(): string {
+    const defaultToken = "0";
     const cookies = new Cookies();
-    return cookies.get('token');
+    let cookie = cookies.get('token');
+    if (cookie == undefined) {
+        cookie = defaultToken;
+    }
+    return cookie;
 }
