@@ -39,19 +39,18 @@ export class Home extends Component<IProps, IState> {
     }
 
     render() {
-        const {email, picture} = this.state;
+        const {email} = this.state;
         return (
             <div id='welcomeText'
                  className='tile is-ancestor has-text-centered is-vertical'>
                 <div className='tile is-parent '>
                     <article className='tile is-child'>
                         <p id='welcomeTitle' className='title'>LapX Personal Website</p>
-                        <div className='content'>
+                        <div className='content is-medium'>
                             Here you will find personal projects I worked on in my free time.
                         </div>
-                        <div className='content'>
-                            You can find the code on my Github profile by clicking the icon at the top right of the
-                            website.
+                        <div className='content is-small'>
+                            Click the Github icon to see the code.
                         </div>
                         <div className={email == "" ? 'is-hidden' : 'content'}>
                             Welcome {email}
