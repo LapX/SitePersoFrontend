@@ -42,6 +42,14 @@ const style = makeStyles(() =>
             marginBottom: -50,
             marginLeft: 'auto',
             width: '70%',
+        },
+        typographyMobile:{
+            color: 'white',
+            fontSize: 14,
+            margin: 15,
+            marginBottom: -30,
+            marginLeft: 60,
+            width: '70%',
         }
     }))
 ;
@@ -56,11 +64,15 @@ const EarningsGraph = (props: IProps) => {
     const classes = style();
     const {theme, EarningsGraphData} = props;
 
+    const isMobile = () => {
+        return window.matchMedia("(max-width: 570px)").matches;
+    }
+
     return (
         <ThemeProvider theme={theme}>
             <div
-                className={window.matchMedia("(max-width: 570px)").matches ? classes.containerMobile : classes.container}>
-                <Typography className={classes.typography}>Earnings in the
+                className={isMobile() ? classes.containerMobile : classes.container}>
+                <Typography className={isMobile() ? classes.typographyMobile : classes.typography}>Earnings in the
                     last {EarningsGraphData.length} years</Typography>
                 <VictoryChart domainPadding={30} theme={VictoryTheme.material}>
                     <VictoryAxis tickValues={["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"]} style={axisStyle}/>

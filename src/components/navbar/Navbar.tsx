@@ -50,7 +50,6 @@ const style = makeStyles((theme) =>
 
 const Navbar = (props: IProps) => {
     const classes = style();
-    const mobileWidth = 570;
     const {theme} = props;
     const [hash, setHash] = useState(window.location.hash);
     const [userPicture, setUserPicture] = useState("");
@@ -83,13 +82,17 @@ const Navbar = (props: IProps) => {
         }
     };
 
+    const isMobile = () => {
+        return window.matchMedia("(max-width: 570px)").matches;
+    }
+
     return (
         <ThemeProvider theme={theme}>
             <AppBar
                 position="sticky"
                 className={hash == "#/" ? classes.homeAppBar : classes.appBar}>
                 <Toolbar
-                    className={window.matchMedia("(max-width: " + mobileWidth + "px)").matches ? "is-hidden" : ""}>
+                    className={isMobile() ? "is-hidden" : ""}>
                     <IconButton color='primary' href={ghPagesRouting + '/'} className={classes.button}>
                         <Typography>
                             Home
@@ -127,7 +130,7 @@ const Navbar = (props: IProps) => {
                         <FontAwesomeIcon icon={faLinkedin}/>
                     </IconButton>
                 </Toolbar>
-                <Toolbar className={window.matchMedia("(max-width: " + mobileWidth + "px)").matches ? "" : "is-hidden"}>
+                <Toolbar className={isMobile() ? "" : "is-hidden"}>
                     <IconButton color='primary' onClick={handleClick}>
                         <MenuIcon></MenuIcon>
                     </IconButton>
