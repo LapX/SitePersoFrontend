@@ -9,6 +9,9 @@ import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons"
 import Avatar from "@material-ui/core/Avatar";
 import {getToken} from "../../utils/Authentication";
 import {getUser} from "../../utils/Api";
+import MenuIcon from '@material-ui/icons/Menu';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const ghPagesRouting = '/SitePersoFrontend/#';
 const backend = 'https://lapx.herokuapp.com/';
@@ -47,9 +50,11 @@ const style = makeStyles((theme) =>
 
 const Navbar = (props: IProps) => {
     const classes = style();
+    const mobileWidth = 570;
     const {theme} = props;
     const [hash, setHash] = useState(window.location.hash);
     const [userPicture, setUserPicture] = useState("");
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
     useEffect(() => {
         window.addEventListener("hashchange", onHashChange);
@@ -66,12 +71,25 @@ const Navbar = (props: IProps) => {
         setUserPicture(userInfo.Picture)
     }
 
+
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = (nav: string) => {
+        setAnchorEl(null);
+        if (nav !== "") {
+            window.location.href = ghPagesRouting + nav;
+        }
+    };
+
     return (
         <ThemeProvider theme={theme}>
             <AppBar
                 position="sticky"
                 className={hash == "#/" ? classes.homeAppBar : classes.appBar}>
-                <Toolbar>
+                <Toolbar
+                    className={window.matchMedia("(max-width: " + mobileWidth + "px)").matches ? "is-hidden" : ""}>
                     <IconButton color='primary' href={ghPagesRouting + '/'} className={classes.button}>
                         <Typography>
                             Home
@@ -82,11 +100,56 @@ const Navbar = (props: IProps) => {
                             Dashboard
                         </Typography>
                     </IconButton>
-                    <IconButton color='primary' href={ghPagesRouting + '/LightingControl'} className={classes.button}>
+                    <IconButton color='primary' href={ghPagesRouting + '/LightingControl'}
+                                className={classes.button}>
                         <Typography>
                             Lighting control
                         </Typography>
                     </IconButton>
+                    <IconButton color='primary' href={backend + '/auth/google/login'}
+                                className={userPicture == "" ? classes.navbarEnd : "is-hidden"}>
+                        <Typography>
+                            Login
+                        </Typography>
+                    </IconButton>
+                    <IconButton color='primary' href={backend + '/auth/google/login'}
+                                className={userPicture == "" ? "is-hidden" : classes.navbarEnd}>
+                        <Avatar src={userPicture}/>
+                    </IconButton>
+                    <IconButton color='primary'
+                                className={classes.button}
+                                href="https://github.com/LapX">
+                        <FontAwesomeIcon icon={faGithub}/>
+                    </IconButton>
+                    <IconButton color='primary'
+                                className={classes.button}
+                                href="https://www.linkedin.com/in/tommy-montreuil-30714ba8/">
+                        <FontAwesomeIcon icon={faLinkedin}/>
+                    </IconButton>
+                </Toolbar>
+                <Toolbar className={window.matchMedia("(max-width: " + mobileWidth + "px)").matches ? "" : "is-hidden"}>
+                    <IconButton color='primary' onClick={handleClick}>
+                        <MenuIcon></MenuIcon>
+                    </IconButton>
+                    <Menu
+                        id="simple-menu"
+                        anchorEl={anchorEl}
+                        keepMounted
+                        open={Boolean(anchorEl)}
+                        onClose={() => {
+                            handleClose("")
+                        }}
+                    >
+                        <MenuItem onClick={() => {
+                            handleClose("/")
+                        }}>Home</MenuItem>
+                        <MenuItem onClick={() => {
+                            handleClose("/Dashboard")
+                        }}>Dashboard</MenuItem>
+                        <MenuItem onClick={() => {
+                            handleClose("LightingControl")
+                        }}>Lighting control</MenuItem>
+                    </Menu>
                     <IconButton color='primary' href={backend + '/auth/google/login'}
                                 className={userPicture == "" ? classes.navbarEnd : "is-hidden"}>
                         <Typography>
