@@ -17,7 +17,7 @@
     "@types/react-dom": "16.8.5",
     "@types/react-router-dom": "^4.3.5",
     "@types/victory": "^31.0.22",
-    "axios": "^0.19.1",
+    "axios": "^0.21.1",
     "bulma": "^0.7.5",
     "gh-pages": "^2.2.0",
     "react": "^16.12.0",
